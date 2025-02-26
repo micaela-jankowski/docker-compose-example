@@ -6,8 +6,8 @@ steps:
     key: "build-step"
     artifact_paths: "hello/my-hello-app"
     plugins:
-      - docker#v5.9.0:
-          image: "golang:1.22"
+      - docker-compose#v5.4.0:
+          run: app
           mount-buildkite-agent: true
   - input: "Get User Name"
     fields:
@@ -24,6 +24,6 @@ steps:
     key: "execution-step"
     depends_on: ["input-step"]
     plugins:
-      - docker#v5.9.0:
-          image: "golang:1.22"
+      - docker-compose#v5.4.0:
+          run: app
           mount-buildkite-agent: true
