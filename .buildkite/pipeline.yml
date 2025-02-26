@@ -8,6 +8,7 @@ steps:
     plugins:
       - docker#v5.9.0:
           image: "golang:1.22"
+          mount-buildkite-agent: true
   - input: "Get User Name"
     fields:
       - text: "Please Input Your Name"
@@ -25,3 +26,4 @@ steps:
     plugins:
       - docker#v5.9.0:
           image: "golang:1.22"
+          mount-buildkite-agent: true
