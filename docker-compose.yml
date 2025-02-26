@@ -1,15 +1,20 @@
+version: "3.7"
 services:
   app:
-    build: .
+    build:
+      context: .
+      dockerfile: Dockerfile
     volumes:
       - ./:/work:cached
       - ~/gocache:/gocache
       - ~/gomodcache:/gomodcache
     working_dir: /work
     environment:
+      - CGO_ENABLED=0
       - BUILDKITE_AGENT_ACCESS_TOKEN
       - BUILDKITE_JOB_ID
       - BUILDKITE_BUILD_ID
       - BUILDKITE_BUILD_NUMBER
       - GOCACHE=/gocache
       - GOMODCACHE=/gomodcache
+    entrypoint: /bin/sh
