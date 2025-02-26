@@ -5,6 +5,9 @@ steps:
       go build -o ./my-hello-app
     key: "build-step"
     artifact_paths: "hello/my-hello-app"
+    plugins:
+      - docker#v5.9.0:
+          image: "golang:1.22"
   - input: "Get User Name"
     fields:
       - text: "Please Input Your Name"
@@ -19,3 +22,6 @@ steps:
       ./my-hello-app "$(buildkite-agent meta-data get name)"
     key: "execution-step"
     depends_on: ["input-step"]
+    plugins:
+      - docker#v5.9.0:
+          image: "golang:1.22"
