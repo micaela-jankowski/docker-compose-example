@@ -13,7 +13,6 @@ steps:
     depends_on: ["build-step"]
   - label: "Execution"
     command: |
-      .buildkite/execution.sh
       buildkite-agent artifact download hello/my-hello-app . --step build-step
       cd hello
       chmod +x ./my-hello-app
