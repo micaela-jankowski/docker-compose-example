@@ -1,8 +1,6 @@
 steps:
   - label: "Build and Upload Artifact"
-    commands:
-      - cd hello
-      - go build -o ./my-hello-app
+    commands: "cd hello && go build -o ./my-hello-app"
     key: "build-step"
     artifact_paths: "hello/my-hello-app"
     plugins:
@@ -15,15 +13,16 @@ steps:
         key: "name"
     key: "input-step"
     depends_on: ["build-step"]
-  - label: "Execution"
-    commands:
-      - buildkite-agent artifact download hello/my-hello-app . --step build-step
-      - cd hello
-      - chmod +x ./my-hello-app
-      - ./my-hello-app $(buildkite-agent meta-data get name)
-    key: "execution-step"
-    depends_on: ["input-step"]
-    plugins:
-      - docker-compose#v5.4.0:
-          run: app
-          config: docker-compose.yml
+
+  # - label: "Execution"
+  #   commands:
+  #     - buildkite-agent artifact download hello/my-hello-app . --step build-step
+  #     - cd hello
+  #     - chmod +x ./my-hello-app
+  #     - ./my-hello-app $(buildkite-agent meta-data get name)
+  #   key: "execution-step"
+  #   depends_on: ["input-step"]
+  #   plugins:
+  #     - docker-compose#v5.4.0:
+  #         run: app
+  #         config: docker-compose.yml
