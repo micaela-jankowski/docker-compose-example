@@ -1,6 +1,6 @@
 steps:
   - label: "Build and Upload Artifact"
-    commands: "cd hello && go build -o ./my-hello-app"
+    command: "cd hello && go build -o ./my-hello-app"
     key: "build-step"
     artifact_paths: "hello/my-hello-app"
     plugins:
