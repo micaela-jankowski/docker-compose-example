@@ -1,11 +1,13 @@
 steps:
   - label: "Build and Upload Artifact"
-    command: "./build.sh"
+    command: ./build.sh
     key: "build-step"
     artifact_paths: "hello/my-hello-app"
     plugins:
       - docker-compose#v5.4.0:
           run: app
+          config: docker-compose.yml
+          mount-buildkite-agent: true
   - input: "Get User Name"
     fields:
       - text: "Please Input Your Name"
