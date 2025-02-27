@@ -8,7 +8,6 @@ steps:
       - docker-compose#v5.4.0:
           run: app
           config: docker-compose.yml
-          mount-buildkite-agent: true
   - input: "Get User Name"
     fields:
       - text: "Please Input Your Name"
