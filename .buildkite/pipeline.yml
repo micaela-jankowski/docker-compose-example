@@ -6,7 +6,6 @@ steps:
     plugins:
       - docker-compose#v5.4.0:
           run: app
-          config: docker-compose.yml
   - input: "Get User Name"
     fields:
       - text: "Please Input Your Name"
