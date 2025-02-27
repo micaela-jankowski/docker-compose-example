@@ -1,11 +1,11 @@
 steps:
   - label: "Build and Upload Artifact"
-    command: ./build.sh
+    command: cd hello && go build -o ./my-hello-app
     key: "build-step"
     artifact_paths: "hello/my-hello-app"
     plugins:
       - docker#v5.11.0:
-          image: golang:1.18.0
+          image: "golang:1.18.0"
           mount-buildkite-agent: true
   - input: "Get User Name"
     fields:
